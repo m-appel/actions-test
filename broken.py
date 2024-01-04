@@ -6,3 +6,5 @@ def main():
     print("Hello")
 def no_space():
     pass
+def even_less_space():
+    return
