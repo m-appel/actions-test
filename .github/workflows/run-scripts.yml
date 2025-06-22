@@ -1,6 +1,7 @@
 name: Run scripts
 on:
-  workflow_call:
+  schedule:
+    - cron: "20 * * * *"
   workflow_dispatch:
 jobs:
   anchor-measurements:
