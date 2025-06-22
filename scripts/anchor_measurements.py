@@ -320,7 +320,6 @@ if __name__ == '__main__':
     FORMAT = '%(asctime)s %(levelname)s %(message)s'
     logging.basicConfig(
         format=FORMAT,
-        filename='anchor-measurements.log',
         level=logging.INFO,
         datefmt='%Y-%m-%d %H:%M:%S'
     )
