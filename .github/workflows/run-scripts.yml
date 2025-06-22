@@ -1,0 +1,30 @@
+name: Run scripts
+on:
+  workflow_call:
+  workflow_dispatch:
+jobs:
+  anchor-measurements:
+    name: Process anchor measurements
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4.2.2
+      - name: setup python
+        uses: actions/setup-python@v5.6.0
+        with:
+          python-version: 3.13
+          cache: pip
+      - name: install python requirements
+        run: pip install -r requirements.txt
+      - name: run anchor measurement pipeline
+        run: python3 -m scripts.anchor_measurements
+      - name: Commit and push if it changed
+        run: |-
+          git config user.name "Automated"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/*
+          git add stats/*
+          timestamp=$(date -u --rfc-3339=date)
+          git commit -m "Latest data: ${timestamp}" 
+          git push
+  
