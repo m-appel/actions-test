@@ -1,0 +1,12 @@
+name: Test Cron Schedule
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/5 * * * *"  # Runs every 5 minutes for testing
+
+jobs:
+  test-cron:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Cron job ran successfully!"
